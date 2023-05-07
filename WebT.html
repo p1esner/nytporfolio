@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+          if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            document.getElementById("webheader").style.fontSize = "50px";
+          } else {
+            document.getElementById("webheader").style.fontSize = "90px";
+          }
+        }
+    </script>
+    <title>Velkommen til bobs hjemmside</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="prism.css">
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">BDVF</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Forløb.html">Forløb</a></li>
+        <li><a href="#">Kontakt</a></li>
+      </ul>
+    </header>
+    <div id="webheader">Webteknologier</div>
+    <div id="undertitel">
+      Jeg vil på denne side Dokumentere og vise eksempler på brugen af kode i forløbet om webteknologier.
+    </div>
+
+        <h1>Den simpleste måde at opsætte en html side på er således:</h1>
+    <div class= "kodeexplainer">
+      <div class="kodeNTekst">
+        <div class="kontainer">
+            <pre><code id="code" class="language-html">
+                &lt;!DOCTYPE html&gt;
+                &lt;html&gt;
+                &lt;Head&gt;
+                &lt;meta charset="UTF-8"&gt;
+                &lt;link rel="stylesheet" type="text/css" href="style.css"&gt;
+                &lt;/Head&gt;
+                &lt;body&gt;
+                &lt;h1&gt;Hello World&lt;/h1&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+            </code></pre>
+        </div>
+        <div class="sidetekst">
+          <p>
+            <b>&lt;!DOCTYPE html&gt;</b> kommandoen fortæller browseren, hvilket dokumenttype der er tale om.
+            <br>
+            Vi fortæller den altså altså her at dokumenttypen er <b>HTML</b>.
+            <br>
+            Herefter kommer <b>&lt;html&gt;</b> kommandoen som skal omslutte alt der skrives i html før at dokumentet kan læses.
+            <br>
+            Det der så står inde for <b>&lt;Head&gt;</b> kommandoen bliver ikke vist på siden, men er til for at browseren kan læse vigtig information fx hvilke dokumenter den skal refere til senere.
+            <br>
+            Her ser vi fx komanoen <b>&lt;link rel="stylesheet" type="text/css" href="style.css"&gt;</b>, som henviser til hvilket dokumentet den skal hente stylingen af siden fra.
+            <br>
+            Kommandoen <b>&lt;meta charset="UTF-8"&gt;</b> ligger også mellem head-kommandoen og er til for at browseren kan læse bogstaver som <b>æ,ø og å.</b>
+            <br>
+            <b>&lt;body&gt;</b> kommandoen som omslutter <b>Hello world</b> i eksemplet på siden, fortæller browseren hvad der skal vises på selve hjemmesiden.
+            <br>
+            Den skal omslutte tekst, billeder osv, som sammen udgør <b>"Kroppen"</b> på hjemmesiden.
+          </p>
+        </div>
+      </div>
+
+
+      <h1>Billeder i HTML</h1>
+      <div class= "kodeNTekst">
+        <div class="kontainer">
+            <pre><code id="code" class="language-html">
+              &lt;!DOCTYPE html&gt;
+              &lt;html&gt;
+              &lt;body&gt;
+              &lt;img src="billede.png" id="billedejohn"&gt;
+              &lt;/body&gt;
+              &lt;/html&gt;
+            </code></pre>
+        </div>
+        <div class="sidetekst">
+          <p>
+            Billeder indsættes vha. af <b>&lt;img&gt;</b> Kommandoen. <b>&lt;img&gt;</b> Kommandoen skal bruge en 1-2 ekstra faktore for at kunne fungere ordentligt.
+            <br>
+            Som set på eksemplet på siden er den vigtigeste faktor <b>src</b> faktoren. <b>src</b> faktoren står for <b>"source"</b> og fortæller <b>&lt;img&gt;</b>
+            <br>
+            kommandoen hvilket billede den skal indsætte, altså hvilken <b>"Kilde"</b> den skal tage billedet fra.
+            <br>
+            Din <b>"Source"</b> vil ofte være en fil i samme mappe som din side, og den kan derfor referres til så simpelt som at skrive dens navn.
+            <br>
+            Den anden faktor er <b>"id"</b> eller <b>"class"</b>. Denne er ikke nødvændig men vil gøre det mugligt at referre til et specifikt billede senere i <b>CSS</b> end dem alle på en gang.
+
+          </p>
+        </div>
+      </div>
+
+    
+      <h1>Farve i CSS</h1>
+      <div class= "kodeNTekst">  
+        <div class="kontainer">
+          <pre><code id="code" class="language-css">
+            body
+            {
+              background: linear-gradient(#4158D0, #C850C0);
+            }
+          </code></pre>
+        </div>
+        <div class="sidetekst">
+          <p>
+          Sidens farver er valgt ud fra den analoge farveformel hvor der bruges nærtligenende farver fra farvehjulet.
+          <br>
+          Koden for at ændre baggrundsfarven er lavet i css dokumentet.  Øverst i koden fortæller vi css dokumentet hvilken del af koden vi ønsker at stilere.
+          <br>
+          Herefter kommer selve kommandoen, der er ansvarlig for baggrundsfarven, sammen med de farverkoder som jeg har.
+          <br>
+          Farverne har jeg hentet fra hjemmesiden "grabient" for at få den glidende overgang.
+          </p>
+        </div>
+      </div>
+
+      <h1>Navigationsbaren</h1>
+      <div class= "kodeNTekst">  
+        <div class="kontainer">
+          <pre><code id="code" class="language-html">
+            &lt;header&gt;
+              &lt;a href="#" class="logo"&gt;BDVF&lt;/a&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="WebT.html"&gt;Webteknologier&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="grimmert.html" class="active"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/header&gt;
+          </code></pre>
+        </div>
+        <div class="sidetekst">
+          <p>
+          Øverst på siden ses min navigationsbar. Den er lavet med koden der ses ude på venstre side:
+          <br><br>
+          Koden indledes med <b>&lt;ul&gt;</b> som står for <b>"unordered list"</b> og bruges til at liste en række elementer.
+          <br>
+          <b>&lt;a&gt;</b> komandoen er komandoen for <b>Hyperlinks</b>, som altså er tekst der kan klikkes på for at komme til en ny side.
+          <br>
+          Det er disse <b>Hyperlinks</b> der gør navigationsbaren brugbar.
+          <br>
+          <b>Href</b> faktoren fortæller hjemmesiden hvilken siden som hyperlinket skal redirecte til.
+          <br>
+          <b>Class</b> Faktoren er den faktor der styrer hvilken del af listen der skal highligtes. Altså den <b>"Aktive"</b> Hjemmeside.
+          </p>
+        </div>
+      </div>
+
+
+      <h1>Styling af Navigationsbaren</h1>
+      <div class= "kodeNTekst">  
+        <div class="kontainer">
+          <pre><code id="code" class="language-css">
+            header ul
+            {
+              display: flex;
+            }
+            header ul li
+            {
+              list-style: none;
+              margin-left: 20px;
+            }
+            header ul li a
+            {
+              text-decoration: none;
+              padding: 6px 15px;
+              color: #fff;
+              border-radius: 20px;
+            }
+
+            header ul li a.active,
+            header ul li a:hover
+            {
+              background: #fff;
+              color: #2b1055;
+            }
+          </code></pre>
+        </div>
+        <div class="sidetekst">
+          <p>
+          Øverst på siden ses min navigationsbar. Den er stylet med den css kode der ses ude på venstre side:
+          <br><br>
+          I css startes enhver del af kode med en linje der fortæller hjemmesiden hvilken del af koden vil styler
+          <br>
+          Her starter vi altså med at style <b>ul</b> altså den "unordered liste" inde i <b>headeren</b>
+          <br>
+          Vi giver den kun 1 ting og det er <b>display: flex;</b> kommandoen, der gør at listen går vandret i stedet for lodret.
+          <br><br>
+          Derefter styler vi vært indivduelle <b>li</b> altså <b>"list item"</b>.
+          <br>
+          Her fortæller vi den først at list itemsne ikke skal have bullet points med <b>"list-style"</b> kommandoen.
+          <br>
+          Derefter hvor stort et omrøde rundt om teksten vært list item skal optage med <b>"margin"</b> komandoen.
+          <br><br>
+          Til sidst styler vi alle <b>HyperLinksne</b> inde i listen. Vi fortæller den først at der ikke skal være noget tekst dekoration på som fx underlines eller italic effekter.
+          <br>
+          Derefter fortæller vi den igen hvor stort et område rundt om teksten <b>HyperLinksne</b> må optage.
+          <br>
+          Så hvilken farve teksten skal have med <b>Color</b> kommandoen.
+          <br>
+          Og til sidst giver vi den flotte runde cirkel man ser rundt om teksten.
+          <br><br>
+          Det sidste vi fortæller den er hvad der skal ske med de <b>"list items"</b> som har classen "Aktive" (som forklaret tidligere) og dem musen rør.
+          <br>
+          Her siger vi altså at den skal gøre cirklens bagrund hvid, og teksten sort.
+          </p>
+        </div>
+      </div>
+  </div>
+
+</body>
+<script src="prism.js"></script>
+</html>

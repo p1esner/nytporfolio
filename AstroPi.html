@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+          if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            document.getElementById("webheader").style.fontSize = "50px";
+          } else {
+            document.getElementById("webheader").style.fontSize = "90px";
+          }
+        }
+    </script>
+    <title>Velkommen til bobs hjemmside</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="prism.css">
+  </head>
+    <body>
+        <header>
+            <a href="#" class="logo">BDVF</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Forløb.html" class="active">Forløb</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </header>
+        <div id="webheader">Astro-Pi</div>
+        <div id="undertitel">
+            På denne side finder du en gennemgang af vores Astro-Pi forløb og vores Astro-pi projekt.
+        </div>
+
+        <h1>Projektbeskrivelse</h1>
+        <p>
+          I vores Projektbeskrivelse skulle vi beskrive hvilket videnskabeligt spørgsmål vi godt ville have svar på. dette gjorde vi ud fra 2 underspørgsmål.<br><br>
+        </p>
+          <h3>Describe your team's experiment and what they plan to investigate.</h2>
+        <p>
+          The point of our experiment is to test which plants are able to grow, given the external factors measured by the astropi's sensors. We are gonna create a list of plants that are safe for consumption, the list of plants would be accompanied with information about the temperature and humidity required for the specific plants optimal growth. We would then compare this data with the data measured by the AstroPI's temperature and humidity sensor on the spacestation. By doing so we could determine which plants are able to grow in the environment on the space station. This can give us better knowledge of becoming self-sufficient in space. We are gonna start out with using a smaller list of plants, about 2-3 different plants. as proof of concept, as having a longer list increases the chance of the experiment failing.
+
+        </p>
+          <h3>What type of data does your team plan to gather?</h2>
+        <p>
+          We plan to use the AstroPI's tempature and humidity sensors, and if possible, also its Colour and luminosity sensor, We are also going to be using the pi's processor temperature sensor to compensate for the heat it transfers to our senseHat. We do this since the temperature of the pi's components impact our sensor's result. We've concluded the temperature from the senseHat isn't accurate enough for the experiment.  A more ambitious goal of our's would be to use the AstroPI's Colour and luminosity sensor in order to also compare the neccesary light for each plant, although we do realise the possible problems this may cause. Aside from it being unrealistic that the plants main source of light would come from the light already present on the spacestation, and not extra plantlights.
+        </p>
+        <h1>Gennemgang af ESA's specifikationer</h1>
+        <p>ESA har nogle specifikationer, som satte nogle rammer for vores projekt.</p>
+        <h3>Liste af ESA's specifikationer</h3>
+        <ol id="ESA">
+          <li>"Must be able to run independently, it cannot rely on astronaut interaction with the Astro Pi computer. We can't be sure when an astronaut will be available, and they have a busy work schedule."</li>
+          <li>"Must be a scientific experiment, for example it should not be a game."</li>
+          <li>"Should not require real-time communication with the Astro Pis on the ISS. We don't have a radio communication module to be able to 'give instructions' from Earth"</li>
+          <li>"Should not rely on running on a specific date or time of day. We cannot predict accurately when each experiment will run."</li>
+          <li>"Must use the infrared camera correctly. The camera is not capable of thermal imaging. Any experiments submitted that require thermal imaging will sadly not be able to achieve flight status."</li>
+          <li>"Should not rely on a specific event happening that is unlikely to occur in the three hour period in which your experiment would run."</li>
+          <li>"Should not rely on the ISS passing over a specific feature on Earth that is unlikely to occur in the three hour period in which your experiment would run."</li>
+          <li>"Should not need more than 3GB of data for your results."</li>
+          <li>"Must not require any additional equipment or access to anything else on the ISS."</li>
+        </ol>
+        <br>
+        <p>ESA's specifikationer gav os ikke de store problematikker. Vores eksperiment holdte sig på forhånd indenfor de rammer som ESA have sat og det var derfor ikke det største besvær.</p>
+        
+        <h3>Problematik med ESA's specifikation</h3>
+        <p>På trods af det, var der et punkt der gjorde vores arbejde mere besværligt. Som nævnt tidligere er AstroPI's temperaturmåling ikke særlig præcis, da dens output vil være påvirket af AstroPI's hardware's temperatur.
+          En nem måde hvorpå vi kunne løse dette ville være at få adgang til rumstationens egen temperaturmåling der altså ville være meget mere præcis. Det forhindre følgende specifikation os i:
+        </p>
+        <p><b>"Must not require any additional equipment or access to anything else on the ISS"</b></p>
+        <p>Vi løste dette problem ved at bruge en måling af både den temperatur astropien måler lokalet til, samt astropien's processors temperatur. Der kan ses et kodsnippet af hvordan vi gjorde det forneden.</p>
+        <h1>Beskrivelse af testmåling af mindst en sensor & gennemgang af relevante kodestumper</h1>
+        <h1>Flowchart</h1>
+    </body>
+</html>

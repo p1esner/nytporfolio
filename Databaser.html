@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+          if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            document.getElementById("webheader").style.fontSize = "50px";
+          } else {
+            document.getElementById("webheader").style.fontSize = "90px";
+          }
+        }
+    </script>
+    <title>Velkommen til bobs hjemmside</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="prism.css">
+  </head>
+    <body>
+        <header>
+            <a href="#" class="logo">BDVF</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Forløb.html" class="active">Forløb</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </header>
+        <div id="webheader">Databaser</div>
+        <div id="undertitel">
+            Undertitel
+        </div>
+
+    </body>
+</html>

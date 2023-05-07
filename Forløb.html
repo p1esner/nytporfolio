@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+          if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            document.getElementById("webheader").style.fontSize = "50px";
+          } else {
+            document.getElementById("webheader").style.fontSize = "90px";
+          }
+        }
+    </script>
+    <title>Velkommen til bobs hjemmside</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="prism.css">
+  </head>
+    <body>
+        <header>
+            <a href="#" class="logo">BDVF</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Forløb.html" class="active">Forløb</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </header>
+        <div id="webheader">Forløb</div>
+        <div id="undertitel">
+            Her kan du se og udforske de forskellige forløb vi har haft
+        </div>
+
+
+        <div class="forløb-udforsk">
+          <div onclick="window.location.href = 'WebT.html';" class="forløb-container">
+            <h1>Webteknologier</h1>
+          </div>
+          <div class="forløb-container" onclick="window.location.href = 'ITSikkerhed.html';">
+            <h1>IT-Sikkerhed</h1>
+          </div>
+          <div class="forløb-container"onclick="window.location.href = 'AstroPi.html';">
+            <h1>Astro-Pi</h1>
+          </div>
+          <div class="forløb-container" onclick="window.location.href = 'MachineLearn.html';">
+            <h1>Machine-learning</h1>
+          </div>
+          <div class="forløb-container" onclick="window.location.href = 'SpilLegSam.html';">
+            <h1>Spil, Leg og samarbejde</h1>
+          </div>
+          <div class="forløb-container" onclick="window.location.href = 'Databaser.html';">
+            <h1>Databaser</h1>
+          </div>
+        </div>
+
+
+
+
+    </body>
+</html>
