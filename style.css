@@ -207,3 +207,22 @@ h3{
   padding-left: 40px;
   list-style-type: disc;
 }
+
+#flowchart {
+  border-radius: 10%;
+  width: 40%;
+  transform: translateX(30vw);
+}
+
+table {
+  background: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  border: 1px solid ;
+}
+th {
+  border: 1px solid ;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}

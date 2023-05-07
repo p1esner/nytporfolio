@@ -66,7 +66,106 @@
         </p>
         <p><b>"Must not require any additional equipment or access to anything else on the ISS"</b></p>
         <p>Vi løste dette problem ved at bruge en måling af både den temperatur astropien måler lokalet til, samt astropien's processors temperatur. Der kan ses et kodsnippet af hvordan vi gjorde det forneden.</p>
+        <h3>overholder vores projekt alle ESA's specifikationer?</h3>
+        <p>Efter vores justeringer med målingen at temperaturen uden ekstra udstyr, vil vi mene at projektet overholder alle ESA's krav.</p>
         <h1>Beskrivelse af testmåling af mindst en sensor & gennemgang af relevante kodestumper</h1>
+        <p>
+          Som skrevet ovenfor var det nødvendigt for os at måle både temperatur og luftfugtighed, for at kunne undersøge hvilke planter der har mulighed for at leve på rumstationen. Disse målinger foretog vi hvert 10 sekund &lpar; Unødvendigt ofte &rpar;. Kigger man dog på resultaterne af målingerne var der ikke betydelige forskelle fra måling til måling. Dette er naturligt eftersom højde osv på vores pi ikke ændrede sig, men forblev det samme sted. Flyttedes vores pi tættere på et åbent vindue var det klart at temperaturen faldt nogle grader, dog går vi ud fra at der ikke er nogle åbne vinduer på rumstationen ;&rpar;.
+        </p>
+
+        <div class= "kodeNTekst">
+          <div class="kontainer">
+              <pre><code id="code" class="language-py">
+import datetime
+from time import sleep
+from sense_hat import senseHat
+sense = SenseHat()
+              </code></pre>
+          </div>
+          <div class="sidetekst">
+            <p>
+              Alt kode blev, som angivet i ESA's specifikationer, blev skrevet i  python.  linje 1-4 er de mest grundlæggende dele af vores kode, nemlig hvor vores data skal indhentes fra:
+              - Linje 1: Tidspunktet af målingen skal importeres
+              - Linje 2: Hvor ofte målingerne skal foretages er angivet under "sleep", som senere i linje 21 er sat til hvert 10 sekund.
+              - Linje 3: Sense-hat'en indsamler data om blandt andet temperatur og luftfugtighed, som vi skal bruge
+              - Linje 4: Fortæller at når der refereres til "sense", skal data indsamles fra sense-hat'en.
+            </p>
+          </div>
+        </div>
+
+        <div class= "kodeNTekst">
+          <div class="kontainer">
+              <pre><code id="code" class="language-py">
+start_time = datetime.datetime.now()
+now_time = datetime.datetime.now()
+duration = datetime.timedelta(seconds=180)
+              </code></pre>
+          </div>
+          <div class="sidetekst">
+            <p>
+              Næste del af koden angiver hvornår vores målinger skal starte (linje 7-8). På linje 9 er det angivet forsøget varighed, altså 180 sekunder:
+            </p>
+          </div>
+        </div>
+
+        <div class= "kodeNTekst">
+          <div class="kontainer">
+              <pre><code id="code" class="language-py">
+with open ("test.csv", "w") as file:
+  file.write("time , Temperature , humidity \n")
+              </code></pre>
+          </div>
+          <div class="sidetekst">
+            <p>
+              Her beder vi programmet om at åbne en ny fil, kaldet "test.csv". I filen beder vi yderligere om at få angivet tidspunktet for målingen, temperaturen og luftfugtigheden. Her kan vi altså se alt den indsamlede data fra sensorene.
+            </p>
+          </div>
+        </div>
+
+        <div class= "kodeNTekst">
+          <div class="kontainer">
+              <pre><code id="code" class="language-py">
+while now_time &lt; start_time + duration:
+  t = sense.get_temperature()
+  h = sense.get_humidity()
+  now_time = datetime.datetime.now()
+              </code></pre>
+          </div>
+          <div class="sidetekst">
+            <p>
+              her giver vi vores sensorer et lidt mere overskueligt navn, så vi ikke hver gang der refereres til dem behøver at skrive hele navnet. Herefter defineres naturligvis hvilket navn der tilhører hvilken sensorer. Vi har valgt at kalde dem for henholdsvis h og t, for humidity og temperature:
+            </p>
+          </div>
+        </div>
+
+        <div class= "kodeNTekst">
+          <div class="kontainer">
+              <pre><code id="code" class="language-py">
+if 17 &lt;= t &lt;= 24 and 45 &lt;= h &lt;=60;
+  with open ("plante.csv", "a") as file:
+    file.wrtie("forholdende for kartofler er gode")
+else:
+  with open ("plante.csv", "a") as file:
+    file.wrtie("forholdende for kartofler er ikke gode")
+              </code></pre>
+          </div>
+          <div class="sidetekst">
+            <p>
+              her begynder selve forsøget med planterne. Hver plante har individuelle krav for levevilkår, og disse er indtastet i koden. Herunder er en gennemgang af koden for "kartofler":
+              <b>if-kommandoen</b> benyttes når noget skal ske HVIS noget andet gælder. Her er det altså skrevet, at HVIS temperaturen er større eller lig 17 grader og mindre er lig 24 grader, og luftfugtigheden er større eller lig 45% og mindre er lig 60%, skal nedenstående (linje 31.32) gælde. Hvis ikke, skal linje 34-35 gælde.
+              Hvis ovenstående if-kommando var sand, åbnes filen plante.csv, hvor teksten "forholdene for kartofler er gode" skrives.
+              Var if-kommandoen IKKE sand, skal filen plante.csv åbnes, og teksten "forholdene for kartfoler er ikke gode" skal skrives.
+              <br><br>
+              Samme kode skrev vi ind for de resterende planter. Havde vi haft mere tid til at udarbejde koden havde det helt klart været relevant et simplificere koden og på den måde undgå alle disse gentagelser. Dette kunne vi have gjort ved at lave lister i stedet for at skrive hele koden op på ny hver gang. Alligevel fik vi ud fra den brugte kode angivet hvilke planter der under de nutidige forhold ville have mulighed for at leve, og hvilke der ikke ville i filen "plante.csv". Filen så altså således ud:
+            </p>
+          </div>
+        </div>
+
         <h1>Flowchart</h1>
+        <img src="flowchartpi.png" id="flowchart">
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-python.min.js"></script>
+    
 </html>

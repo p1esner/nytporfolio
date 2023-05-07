@@ -27,8 +27,218 @@
         </header>
         <div id="webheader">Databaser</div>
         <div id="undertitel">
-            Undertitel
+          På denne side vil der være information om hvad der blev gennemgået i forløbet om Databaser.
         </div>
 
-    </body>
+        <h1>Hvad er en database?</h1>
+        <p>En database er overordnet set en systematiseret samling af data på ét sted. Den gør det muligt at holde på en større mængde information, så den er let at tilgå og opdatere. Den kan gemme informationer om alt, for eksempel personer, biler, adresser osv.</p>
+
+        <h1>Hvad er en 3-lags struktur?</h1>
+        <p>I en trelagsarkitur inddeles et program i tre lag, hvilket er er nyttigt i implementeringen af programmer, da de tre lag så vidt mulig holdes adskilte og dermed er hele programmet lettere at overskue. Lagene er delt op på følgende måde:        </p>
+        <h3>Pæsentationslag:</h3>
+        <p>
+          Præsentationslaget er det øverste lag der håndterer modtagelse og præsentation af data. Dette lag er kendetegnet ved at være ”tæt” på brugeren af programmet. Et eksempel på hvordan dette kunne se ud på hjemmeside er LogIn-funktionen. Præsentationslaget skrives ofte i html/css, og kører direkte på computeren.
+        </p>
+        <h3>Logiklag:</h3>
+        <p>Logiklaget er det midterste lag der håndterer udvekslingen af data mellem præsentationslaget og datalaget. Et eksempel på dette lag er der hvor hjemmesiden får adgang til data, altså sammenkoplingen mellem de 2 sprog. Logiklaget skrives typsik i javascript/ps.j5, og kører ligesom præsentationslaget også på computeren.</p>
+        <h3>Datalag:</h3>
+        <p>Datalaget er det nederste og inderste lag der opbevarer og håndterer selve dataen. Dette lag er også kendetegnet ved at være ”tæt” på computeren fremfor brugeren. Et eksempel på dette er altså selve den database en hjemmeside indhenter informationer fra. Datalaget skrives i SQL.        </p>
+
+        <h1>Primærnøgle og sekundærnøgle</h1>
+        <h3>Primærnøgle:</h3>
+        <p>Kolonnen som i en databse kaldes primærnøglen må kun indeholde unikke tal, og det er essentielt at intet tal ikke optræder mere end én gang i kolonnen. Har 2 brugere for eksempel det samme navn og password, sikrer man sig med primærnøglen, at de stadigvæk har 2 forskellige, unikke tak i "ID"-kolonnen (vores primærnøgle). Hermed kan computeren altså endnu kende forskel på dem. Foruden det unikke ID ville systemet ikke have mulighed for at kende forskel på 2 personer med samme navn og samme password. Dette ville kunne medføre store fejl. Det er blandt andet derfor at vi i Danmark har vores CPR-nummer. For primærnøglen gælder altså følgende:
+
+          - En primærnøgle er en kolonne der udelukkende indeholder unikke værdier.
+          - Alle tabeller i en database har en primærnøgle.
+          - Primærnøglen gør det muligt at kende forskel på alle tabellens rækker, trods at de indeholder ens informationer. Altså så længe at primærnøglen er unik!
+          
+          </p>
+        <h3>Sekundærnøgle:</h3>
+        <p>En sekundærnøgle kan man også sige er en primærnøgle fra en anden tabel. Sekundærnøglen er altså en kolonne der indeholder de sammen værdier som en primærnøgle i en anden tabel. Modsat primærnøglen behøver sekundærnøglen IKKE at være unik. Et eksempel på dette kunne være følgende:
+
+          - En familie på 4 har hver deres ID, men bor alle på sammen adresse. I en tabel ville man altså skulle skrive den samme adresse ind 4 gange. Men ved brug af sekundærnøglen kan dette undgåes. I en anden tabel kan alle adresser i et system få deres eget ID, og i den første tabel der der nu i sekundærnøgles refereres til den samme adresse 4 gange uden at skulle gentage den. Det gør altså systemet meget mere overskueligt. Bor andre personer i databasen også på samme adresse kan der igen blot referes til adressens ID.</p>
+
+        <h1>E/R-diagrammer, entiteter og attributer</h1>
+        <h3>E/R-diagrammer:</h3>
+        <p>Et E/R-diagram er en model som benyttes til at opstille en grafisk præsentation af hvordan en databse og dens seperate elementer er opbygget og har forbindelse til hinanden. Det visualiserer altså en database, og gør den nemmere for os at forstå og få indblik i.Alle komponenterne har forskellige former (firkanter, cirkler osv), som forbindes med linjer. Disse linjer angiver relationen mellem komponenterne. Nedenfor vil jeg forklare om disse komponenter.</p>
+        <h3>Entiteter:</h3>
+        <p>En entitetstype er en bestemt kategori som en database indeholder oplysninger om. Den kan bestå af hvad som helst, for eksempel personer, steder osv. En database kan indeholde et ubestemt antal af entitetstyper. I et E/R-diagram præsenteres en entitet med en firkant. Denne entitetstype kan indeholde entiteter. Er entitetstypen for eksempel personer, ville entiteterne være speifikke personer. En entitetstype kan indeholde et ubestemt antal af entiteter.
+
+        </p>
+        <h3>Attributer:</h3>
+        <p>Attributer giver os oplysninger om hver entitet i entitetstypen. Tager vi igen eksemplet med personer, ville attributerne blandt andet være fornavne, efternavne osv på entiteterne. Dermes kan en entitetstype altså også have et ubestemt antal attributer. Attributer præsenteres i et E/R-diagram med en cirkel.
+
+        </p>
+
+        <h1>Normalisering af data</h1>
+        <p>For at computeren kan forstå vores databaser er det essentielt at systemet er struktureret. For eksempel er det skrevet tideligere vigtigt at undgå gentagelser. Dette kan man undgå ved at normalisere sin database. Formålet med at normalisere er, at gøre det nemmere og mindre risikabelt at foretage rettelser i databasen uden de store problemer ved at undgå gentagelser. Følgende regler gælder for normalisering af en database:
+
+          - Primærknøglen skal fortsat være unik.
+          - Alle kolonner må udelukkende være afhængige af primærnøglen.
+          - Hver kolonne må kun indeholde 1 datatype
+          - Det samme data må ikke gentage sig, og skal altså kun forekomme 1 sted
+          - Alt data skal være relateret til hinanden
+          
+          Her er et eksempel på hvordan et datasæ kan normaliseres. Inden normaliseringen var primærnøglen "ID" ikke unik, og der var flere gentagelser i datasættet. Desuden var alle kolonner ikke udelukkende afhængige af primærnøglen:</p>
+        <div class="center">  
+          <table style="width:50%">
+            <tr>
+              <th>ID</th>
+              <th>Navn</th>
+              <th>Mærke</th>
+              <th>Type</th>
+            </tr>
+            <tr>
+              <th>1</th>
+              <th>Hans</th>
+              <th>Skoda</th>
+              <th>Octavia</th>
+            </tr>
+            <tr>
+              <th>1</th>
+              <th>Hans</th>
+              <th>Skoda</th>
+              <th>Fabia</th>
+            </tr>
+            <tr>
+              <th>2</th>
+              <th>Lars</th>
+              <th>Kia</th>
+              <th>Ceed</th>
+            </tr>
+            <tr>
+              <th>3</th>
+              <th>Petra</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </table>
+        </div>
+        <p>Nu er datasættet normaliseret ved at dele vores data op i flere tabeller, og hermed benyttes vores viden om sekundærnøgler. Her fungerer <b>ID bil</b> som primærnøgle, mens ID kunde fungerer som sekundærnøgle:
+
+        </p>
+        <div class="center">
+          <table style="width:50%">
+            <tr>
+              <th>ID Kunde</th>
+              <th>Navn</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>1</th>
+              <th>Hans</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>2</th>
+              <th>Lars</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>3</th>
+              <th>Petra</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>ID Bil</th>
+              <th>Type</th>
+              <th>Mærke</th>
+              <th>ID Kunde</th>
+            </tr>
+            <tr>
+              <th>1</th>
+              <th>Octavia</th>
+              <th>Skoda</th>
+              <th>1</th>
+            </tr>
+            <tr>
+              <th>2</th>
+              <th>Fabia</th>
+              <th>Skoda</th>
+              <th>1</th>
+            </tr>
+            <tr>
+              <th>3</th>
+              <th>Ceed</th>
+              <th>Kia</th>
+              <th>2</th>
+            </tr>
+          </table>
+        </div>
+        <h1>Projekt med databaser og hjemmesider</h1>
+        <div class= "kodeNTekst">
+          <div class="kontainer">
+              <pre><code id="code" class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h2&gt;Ex 1&lt;/h2&gt;
+
+&lt;button type="button" onclik="getDate()"&gt;Tid og Dato&lt;/button&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;script&gt;<code id="code" class="language-javascript"></code>
+    function getDate(){
+        document.getElementById('demo').innerHTML = Date();
+    }
+&lt;/script&gt;
+    </code>
+              </code></pre>
+          </div>
+          <div class="sidetekst">
+            <p>
+              Formålet med projektet var som tideligere skrevet at bruge vores viden om databaser til at strukturere indholdet af en på en hjemmeside. For at kunne loade data samt at kunne bruge den skal vi benytte os af programmeringssproget javascript. Dette sprog er rigtig godt hvis man ønsker at lave en interaktiv hjemmeside, som i denne quiz-hjemmeside. For at kunne kode HTML og Javascript sammen skriver man i html-koden "script". nu forstår vores hjemmeside altså at vi skriver i javascript indenfor dette område, og vi kan nu lave funktioner som normalt i javascript. I eksemplet nedenfor vil funktionen GetDate køre når der trykkes på knappen. Funktionen gemmer den indhentede dato som en variabel. Denne variabel læses i html i id'et "demo".
+            </p>
+          </div>
+        </div>
+
+        <div class= "kodeNTekst">
+          <div class="kontainer">
+              <pre><code id="code" class="language-javascript">
+function quiz() {
+  var pic;
+  document.getElementById('valg').innerHTML = ""
+  x = Math.floor(Math.random()*4+1);
+  console.log(x);
+  genererTekst(x);
+  document.getElementById('overskuft').innerHTML = overskrift;
+}
+
+function genererTekst(x) {
+  for (var i = 0; i &gt; data.length; i++) {
+    if (data[i]["ID"] ==x) {
+      spoergsmål = data[i]['sporgsmål'];
+      svar = data[i]['svar'];
+      break;
+    }
+  }
+}
+              </code></pre>
+          </div>
+          <div class="sidetekst">
+            <p>
+              Her ses et udklip af koden fra vores eget projekt med databaser og hjemmesider. Som i eksemplet ovenfor køres igen en funktion når der trykkes på knappen, her funktionen "quiz()". Herefter definerer vi vores variabel "x". Det er i linje 27 angivet at der udvælges et tal mellem 0 og 1, og dette ganges 4. Som resultat af "math.floor"-kommandoen afrundes tallet nu til nærmeste hele tal. Sidst plusses det med 1. Hele denne kommando gør det tilfældigt hvilket spørgsmål der kommer op på skærmen når der trykkes på knappen.
+
+I den næste del af koden køres en ny funktion, "genererTekst()". Har går "i" fra 0 til længden af databasen, altså antal elementer vi har med. Herefter tager den ID'et til den tilsvarende "i", og sammenligner denne med den tideligere tilfældigt fundne x-værdi. Hvis det gælder at disse er lig hinanden tager den spørgsmålet til dette "i", og det samme gøres med svaret. Hele denne løkke stoppes nu indtil der igen trykkes på knappen. Når dette sker starter lykken igen forfra.
+
+Som resultat af hele denne funktion har vi fundet et tilfældigt spørgsmål et det tilsvarende svar. Disse data trækkes ud fra en database vi har lavet.
+            </p>
+          </div>
+        </div>
+      </body>
+      <script src="prism.js"></script>
 </html>
